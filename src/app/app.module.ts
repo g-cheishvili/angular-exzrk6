@@ -28,7 +28,28 @@ import {
     PopoverModule,
     TabsModule,
     OverflowLayoutModule,
-    RouterModule,
+    RouterModule.forRoot([
+        {
+          path: 'details',
+          component: AppComponent
+        },
+        {
+          path: 'requirements',
+          component: AppComponent
+        },
+        {
+          path: 'reserved-materials',
+          component: AppComponent
+        },
+        {
+          path: 'checklists',
+          component: AppComponent
+        },
+        {
+          path: '*',
+          redirectTo: 'details'
+        }
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],

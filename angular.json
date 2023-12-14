@@ -18,7 +18,12 @@
             "main": "src/main.ts",
             "tsConfig": "./tsconfig.json",
             "assets": [],
-            "styles": ["src/global_styles.scss"],
+            "styles": [
+              "src/global_styles.scss",
+              "./node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/css_variables.css",
+              "./node_modules/fundamental-styles/dist/theming/sap_fiori_3.css",
+              "./node_modules/@fundamental-ngx/core/styles/fundamental-ngx-core.css"
+            ],
             "scripts": []
           },
           "configurations": {

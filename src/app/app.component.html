@@ -1,40 +1,85 @@
-<nav [ngClass]='{ tabs: isSidebarApp$ | async }' fd-tab-nav>
-<fd-overflow-layout #overflowLayoutComponent>
-  <ng-container *ngFor="let tab of (tabs$ | async); let i = index">
-    <ng-container *ngIf='tab.visible'>
-      <div fd-tab-item *fdOverflowItemRef="tab" fdOverflowLayoutItem [forceVisibility]="rla.isActive">
-        <a
-          fd-tab-link
-          [id]="tab.id"
-          [active]="rla.isActive"
-          [routerLink]="tab.routerLink"
-          routerLinkActive
-          #rla="routerLinkActive"
-        >
-          <span class="tab-title" fd-tab-tag>{{tab.title}}</span>
-        </a>
-      </div>
-    </ng-container>
-  </ng-container>
+<div>
+  <nav [ngClass]='{ tabs: isSidebarApp$ | async }' fd-tab-nav>
+    <fd-overflow-layout #overflowLayoutComponent>
+      <ng-container *ngFor="let tab of (tabs$ | async); let i = index">
+        <ng-container *ngIf='tab.visible'>
+          <div fd-tab-item *fdOverflowItemRef="tab" fdOverflowLayoutItem [forceVisibility]="rla.isActive">
+            <a
+              fd-tab-link
+              [id]="tab.id"
+              [active]="rla.isActive"
+              [routerLink]="tab.routerLink"
+              routerLinkActive
+              #rla="routerLinkActive"
+            >
+              <span class="tab-title" fd-tab-tag>{{tab.title}}</span>
+            </a>
+          </div>
+        </ng-container>
+      </ng-container>
+    
+      <ng-container *fdOverflowExpand="let tabItemRefs">
+        <button
+          fd-button
+          fdType="transparent"
+          fdCompact
+          [label]="'more ' +tabItemRefs.length"
+          [fdMenu]="true"
+          [fdMenuTrigger]="menu"
+          *ngIf="tabItemRefs.length > 0"
+        ></button>
+    
+        <fd-menu #menu>
+          <li fd-menu-item  *ngFor="let tab of tabItemRefs">
+            <a fd-menu-interactive [routerLink]="tab.item.routerLink">
+              <span fd-menu-title> {{ tab.item.title}} </span>
+            </a>
+          </li>
+        </fd-menu>
+      </ng-container>
+    </fd-overflow-layout>
+    </nav>
+</div>
 
-  <ng-container *fdOverflowExpand="let tabItemRefs">
-    <button
-      fd-button
-      fdType="transparent"
-      fdCompact
-      [label]="'more ' +tabItemRefs.length"
-      [fdMenu]="true"
-      [fdMenuTrigger]="menu"
-      *ngIf="tabItemRefs.length > 0"
-    ></button>
-
-    <fd-menu #menu>
-      <li fd-menu-item  *ngFor="let tab of tabItemRefs">
-        <a fd-menu-interactive [routerLink]="tab.item.routerLink">
-          <span fd-menu-title> {{ tab.item.title}} </span>
-        </a>
-      </li>
-    </fd-menu>
-  </ng-container>
-</fd-overflow-layout>
-<nav>
+<div>
+  <nav [ngClass]='{ tabs: isSidebarApp$ | async }' fd-tab-nav>
+    <fd-overflow-layout #overflowLayoutComponent>
+      <ng-container *ngFor="let tab of (tabs$ | async); let i = index">
+        <ng-container *ngIf='tab.visible'>
+          <div fd-tab-item *fdOverflowItemRef="tab" fdOverflowLayoutItem >
+            <a
+              fd-tab-link
+              [id]="tab.id"
+              [active]="rla.isActive"
+              [routerLink]="tab.routerLink"
+              routerLinkActive
+              #rla="routerLinkActive"
+            >
+              <span class="tab-title" fd-tab-tag>{{tab.title}}</span>
+            </a>
+          </div>
+        </ng-container>
+      </ng-container>
+    
+      <ng-container *fdOverflowExpand="let tabItemRefs">
+        <button
+          fd-button
+          fdType="transparent"
+          fdCompact
+          [label]="'more ' +tabItemRefs.length"
+          [fdMenu]="true"
+          [fdMenuTrigger]="menu"
+          *ngIf="tabItemRefs.length > 0"
+        ></button>
+    
+        <fd-menu #menu>
+          <li fd-menu-item  *ngFor="let tab of tabItemRefs">
+            <a fd-menu-interactive [routerLink]="tab.item.routerLink">
+              <span fd-menu-title> {{ tab.item.title}} </span>
+            </a>
+          </li>
+        </fd-menu>
+      </ng-container>
+    </fd-overflow-layout>
+    </nav>
+</div>
